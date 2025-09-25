@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WoW: Harnessing Intuitive Physics from a Scalable Embodied World Model</title>
+  <link rel="icon" href="./figs/logo.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="toc">
+    <h3>Content</h3>
+    <hr>
+    <ul>
+      <li><a href="#abstract">Abstract</a></li>
+      <li><a href="#physics-understanding">Physics Understanding</a></li>
+      <li><a href="#robot-manipulation">Robot Manipulation</a></li>
+      <li><a href="#real-world-scenarios">Real-world Scenarios</a></li>
+      <li><a href="#artistic-interaction">Artistic Interaction</a></li>
+      <li><a href="#approach">Experimental Results</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <div class="hero-text" style="font-size: 100px; text-align: center; margin-bottom: -10px;">WoW</div>
+    <div class="sub-hero-text" style="text-align: center;">
+      Harnessing Intuitive Physics from a Scalable Embodied World Model
+    </div>
+
+    <!-- Anonymous Authors -->
+    <div class="authors" style="text-align: center; color: #000000;">
+      <span class="author-block" style="font-weight: bold;">
+        Anonymous ICLR Submission
+      </span>
+      <br>
+      <span class="affiliation" style="font-weight: normal;">
+        Paper ID: [Under Review] 
+      </span>
+    </div>
+
+    <div class="links-block">
+      <a href="#" target="_blank">[<strong>pdf</strong>]</a>
+      <a href="#" target="_blank">[<strong>supplementary</strong>]</a>
+      <a href="#" target="_blank">[<strong>code</strong>]</a>
+    </div>
+
+    <div class="tagline" id="abstract">Abstract.</div>
+
+    <img src="./figs/teaser.png"></img>
+    <p class="figure-caption">
+        <b>WoW world model</b> generates high-quality, physically consistent robot action videos in Out-of-Distribution (OOD) scenarios, enabling closed-loop corrections and real-world robotic execution. The illustration shows the model's strong generalization across diverse tasks and environments.
+    </p>
+
+    <div class="section">
+      <p style="text-align: justify;">
+        World models have recently emerged as a powerful paradigm for robotics, integrating perception, action, and reasoning. However, most existing world models focus on narrow domains or rely heavily on simulation, limiting their ability to generalize to real-world embodied interaction. We introduce <b>WoW</b> (Harnessing Intuitive Physics from a Scalable Embodied World Model), a large-scale 
+        embodied world model designed to capture intuitive physics and enable scalable robot learning. 
+        WoW unifies multimodal inputs from diverse real and simulated datasets, and leverages embodied interaction to learn dynamics that transfer robustly across environments and robot platforms. 
+        Across extensive experiments, WoW demonstrates strong generalization in manipulation and long-horizon planning, 
+        enabling closed-loop control and real-world deployment. Our results highlight that embodied interaction and 
+        large-scale training are critical to building world-omniscient models for robotics. 
+      </p>
+    </div>
+
+    <div class="tagline" id="physics-understanding">Physics Understanding.</div>
+    
+    <!-- Physics Videos Gallery -->
+    <div class="video-gallery-section" id="physicsGallerySection">
+      <div class="video-gallery-container">
+        <div class="video-gallery" id="videoGalleryPhysics">
+          <video class="gallery-video" src="./static/wow-videos/physics/cube_splitting.mp4" autoplay muted playsinline loop></video>
+          <video class="gallery-video" src="./static/wow-videos/physics/light.mp4" autoplay muted playsinline loop></video>
+          <video class="gallery-video" src="./static/wow-videos/physics/three_cubes_fire_soft_water.mp4" autoplay muted playsinline loop></video>
+          <video class="gallery-video" src="./static/wow-videos/physics/crush_rabbit.mp4" autoplay muted playsinline loop></video>
+          <video class="gallery-video" src="./static/wow-videos/physics/sticky_cube.mp4" autoplay muted playsinline loop></video>
+          <video class="gallery-video" src="./static/wow-videos/physics/counterfact_task1_part1.mp4" autoplay muted playsinline loop></video>
+          <video class="gallery-video" src="./static/wow-videos/physics/counterfact_task1_part3.mp4" autoplay muted playsinline loop></video>
+          <video class="gallery-video" src="./static/wow-videos/physics/cube_flower.mp4" autoplay muted playsinline loop></video>
+          <video class="gallery-video" src="./static/wow-videos/physics/cube_splitting2.mp4" autoplay muted playsinline loop></video>
+        </div>
+      </div>
+      <div class="gallery-caption-container">
+        <div class="gallery-nav-controls">
+          <button class="gallery-nav left" id="scrollLeftBtnPhysics">&lt;</button>
+          <button class="gallery-nav right" id="scrollRightBtnPhysics">&gt;</button>
+        </div>
+        <p class="figure-caption gallery-caption">
+          <b>Physics Understanding:</b> WoW demonstrates sophisticated understanding of physical properties including object splitting, deformation, lighting effects, adhesion, and counterfactual reasoning.
+        </p>
+      </div>
+    </div>
+
+    <div class="tagline" id="robot-manipulation">Robot Manipulation.</div>
+        
+        <!-- Robot Manipulation Videos Gallery -->
+        <div class="video-gallery-section" id="robotsGallerySection">
+          <div class="video-gallery-container">
+            <div class="video-gallery" id="videoGalleryRobots">
+              <video class="gallery-video" src="./static/wow-videos/robots/00000056-manipulate_rope.mp4" autoplay muted playsinline loop></video>
+              <video class="gallery-video" src="./static/wow-videos/robots/00000072-manipulate_scissors.mp4" autoplay muted playsinline loop></video>
+              <video class="gallery-video" src="./static/wow-videos/robots/kitchen3.mp4" autoplay muted playsinline loop></video>
+              <video class="gallery-video" src="./static/wow-videos/robots/00000225-manipulate_rope.mp4" autoplay muted playsinline loop></video>
+              <video class="gallery-video" src="./static/wow-videos/robots/00000244-manipulate_clothes.mp4" autoplay muted playsinline loop></video>
+              <video class="gallery-video" src="./static/wow-videos/robots/if_cabinet_open1.mp4" autoplay muted playsinline loop></video>
+              <video class="gallery-video" src="./static/wow-videos/robots/cutting.mp4" autoplay muted playsinline loop></video>
+              <video class="gallery-video" src="./static/wow-videos/robots/Clear_the_desk_except_for_the_blue_items.mp4" autoplay muted playsinline loop></video>
+              <video class="gallery-video" src="./static/wow-videos/robots/if_cabinet_open2.mp4" autoplay muted playsinline loop></video>
+              <video class="gallery-video" src="./static/wow-videos/robots/stack_cups2_long-term.mp4" autoplay muted playsinline loop></video>
+            </div>
+          </div>
+          <div class="gallery-caption-container">
+            <div class="gallery-nav-controls">
+              <button class="gallery-nav left" id="scrollLeftBtnRobots">&lt;</button>
+              <button class="gallery-nav right" id="scrollRightBtnRobots">&gt;</button>
+            </div>
+            <p class="figure-caption gallery-caption">
+              <b>Robot Manipulation:</b> Diverse manipulation tasks including cube stacking, rope and cloth handling, kitchen operations, conditional reasoning tasks, object cutting, desk organization, and long-horizon planning scenarios.
+            </p>
+          </div>
+        </div>
+
+        <div class="tagline" id="real-world-scenarios">Real-world Scenarios.</div>
+        
+        <!-- Kitchen and Conditional Reasoning Videos -->
+        <div class="video-gallery-section" id="scenariosGallerySection">
+          <div class="video-gallery-container">
+            <div class="video-gallery" id="videoGalleryScenarios">
+              <video class="gallery-video" src="./static/wow-videos/robots/kitchen2.mp4" autoplay muted playsinline loop></video>
+              <video class="gallery-video" src="./static/wow-videos/robots/jobs2.mp4" autoplay muted playsinline loop></video>
+              <video class="gallery-video" src="./static/wow-videos/life/pour2.mp4" autoplay muted playsinline loop></video>
+              <video class="gallery-video" src="./static/wow-videos/life/wujing.mp4" autoplay muted playsinline loop></video>
+            </div>
+          </div>
+          <div class="gallery-caption-container">
+            <div class="gallery-nav-controls">
+              <button class="gallery-nav left" id="scrollLeftBtnScenarios">&lt;</button>
+              <button class="gallery-nav right" id="scrollRightBtnScenarios">&gt;</button>
+            </div>
+            <p class="figure-caption gallery-caption">
+              <b>Real-world Scenarios:</b> Natural environments and daily life activities including kitchen scenes, workplace tasks, and everyday interactions demonstrating practical applicability.
+            </p>
+          </div>
+        </div>
+
+
+    <!-- Cubes Showcase Grid -->
+    <div class="tagline">Object Interactions and Dynamics.</div>
+    <div class="video-grid-container">
+      <div class="video-grid">
+        <video class="grid-video" src="./static/wow-videos/robots/stack_cups_long-term.mp4" autoplay muted playsinline loop></video>
+        <video class="grid-video" src="./static/wow-videos/robots/00000002-manipulate_cubes.mp4" autoplay muted playsinline loop></video>
+        <video class="grid-video" src="./static/wow-videos/cubes/00000143.mp4" autoplay muted playsinline loop></video>
+        <video class="grid-video" src="./static/wow-videos/cubes/00000023.mp4" autoplay muted playsinline loop></video>
+        <video class="grid-video" src="./static/wow-videos/cubes/00000095.mp4" autoplay muted playsinline loop></video>
+        <video class="grid-video" src="./static/wow-videos/cubes/00000099.mp4" autoplay muted playsinline loop></video>
+      </div>
+    </div>
+    <p class="figure-caption">
+      <b>Object Dynamics:</b> A diverse collection of cube interactions showcasing different physical behaviors, collision dynamics, and environmental responses.
+    </p>
+
+    <div class="tagline" id="artistic-interaction">Artistic Interaction.</div>
+
+  <!-- Artistic Videos -->
+  <div class="video-gallery-section" id="artGallerySection">
+    <div class="video-gallery-container">
+      <div class="video-gallery" id="videoGalleryArt">
+        <video class="gallery-video" src="./static/wow-videos/art/Sunflower.mp4" autoplay muted playsinline loop></video>
+        <video class="gallery-video" src="./static/wow-videos/art/van_Gogh.mp4" autoplay muted playsinline loop></video>
+      </div>
+    </div>
+    <div class="gallery-caption-container">
+      <div class="gallery-nav-controls">
+        <button class="gallery-nav left" id="scrollLeftBtnArt">&lt;</button>
+        <button class="gallery-nav right" id="scrollRightBtnArt">&gt;</button>
+      </div>
+      <p class="figure-caption gallery-caption">
+        <b>Artistic Interaction:</b> WoW demonstrates understanding of 2D-3D relationships by enabling robotic hands to extract objects from famous paintings, showcasing cross-modal reasoning between visual art and physical manipulation.
+      </p>
+    </div>
+  </div>
+
+    <div class="tagline" id="approach">Approach.</div>
+
+    <div class="r2s-vertical-layout">
+      <div class="r2s-video-row r2s-top-row">
+        <img class="r2s-video-item r2s-video-input" src="./static/images/wow/method1.png" autoplay muted loop playsinline></img>
+      </div>
+      <div class="r2s-caption-row">
+        <p class="r2s-caption-item">Model Overview</p>
+      </div>
+      <p class="figure-caption">
+        <b>(a) Inference: a latent diffusion transformer predicts future frames from image observations and text-based action descriptions. (b) Training: DINO features supervise intermediate DiT representations via a token relation distillation loss to improve spatial-temporal modeling.</b>
+      </p>
+    </div>
+
+  <div class="tagline" id="approach">Experimental Results.</div>
+
+  <div class="r2s-vertical-layout">
+    <div class="r2s-video-row r2s-top-row">
+      <img class="r2s-video-item r2s-video-input" src="./static/images/1_Table.png"></img>
+    </div>
+    <div class="r2s-caption-row">
+      <p class="r2s-caption-item"><b>Scaling Law Comparison at Varying Data Scales.</b> Performance comparison across four different dataset sizes (30k, 200k, 600k, 2M samples) on multiple benchmarks, demonstrating clear improvements with increased training data following established neural scaling laws.</p>
+    </div>
+  </div>
+
+  <div class="r2s-vertical-layout">
+    <div class="r2s-video-row r2s-top-row">
+      <img class="r2s-video-item r2s-video-input" src="./static/images/2_Table.png" style="height: auto; max-height: none;"></img>
+    </div>
+    <div class="r2s-caption-row">
+      <p class="r2s-caption-item"><b>Comparative Analysis Across Video Generation Models.</b> Comprehensive evaluation of different models including CogVideoX, Cosmos-Predict, Wan2.1, and our proposed WoW across multiple metrics: Video Quality (VQ), Instruction Understanding (IU), Physical Law (PL), and Planning. Results show both human evaluation and autonomous evaluation scores, with WoW achieving superior performance across most dimensions.</p>
+    </div>
+  </div>
+
+  <style>
+  .r2s-video-item {
+    width: 100%;
+    height: auto !important;
+    max-height: none !important;
+    object-fit: contain !important;
+  }
+  </style>
+
+    <div class="bibtex-code">
+      <div class="bibtex-title">BibTeX</div>
+      <pre><code>@article{anonymous2025wow,
+        author    = {Anonymous},
+        title     = {WoW: Harnessing Intuitive Physics from a Scalable Embodied World Model},
+        journal   = {ICLR 2026 Submission},
+        year      = {2026},
+        note      = {Under Review}
+      }</code></pre>
+    </div>
+  </div>
+
+  <div class="footer">
+     © Anonymous ICLR Submission 2026 | Webpage template from <a href="https://www.videomimic.net/">VideoMimic</a>.
+  </div>
+
+  <!-- JavaScript for Video Gallery Navigation -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const galleries = [
+        {
+          sectionId: 'physicsGallerySection',
+          galleryInnerId: 'videoGalleryPhysics',
+          scrollLeftBtnId: 'scrollLeftBtnPhysics',
+          scrollRightBtnId: 'scrollRightBtnPhysics'
+        },
+        {
+          sectionId: 'robotsGallerySection',
+          galleryInnerId: 'videoGalleryRobots',
+          scrollLeftBtnId: 'scrollLeftBtnRobots',
+          scrollRightBtnId: 'scrollRightBtnRobots'
+        },
+        {
+          sectionId: 'scenariosGallerySection',
+          galleryInnerId: 'videoGalleryScenarios',
+          scrollLeftBtnId: 'scrollLeftBtnScenarios',
+          scrollRightBtnId: 'scrollRightBtnScenarios'
+        },
+        {
+          sectionId: 'artGallerySection',
+          galleryInnerId: 'videoGalleryArt',
+          scrollLeftBtnId: 'scrollLeftBtnArt',
+          scrollRightBtnId: 'scrollRightBtnArt'
+        }
+      ];
+
+      galleries.forEach(galleryConfig => {
+        const gallerySection = document.getElementById(galleryConfig.sectionId);
+        if (!gallerySection) return;
+
+        const galleryContainer = gallerySection.querySelector('.video-gallery-container');
+        const galleryInner = document.getElementById(galleryConfig.galleryInnerId);
+        const scrollLeftBtn = document.getElementById(galleryConfig.scrollLeftBtnId);
+        const scrollRightBtn = document.getElementById(galleryConfig.scrollRightBtnId);
+
+        if (galleryContainer && galleryInner && scrollLeftBtn && scrollRightBtn) {
+          const scrollAmount = (galleryInner.firstElementChild?.offsetWidth || 300) + 15;
+
+          scrollLeftBtn.addEventListener('click', () => {
+            galleryContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+          });
+
+          scrollRightBtn.addEventListener('click', () => {
+            galleryContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+          });
+        }
+      });
+    });
+  </script>
+
+  <style>
+    .video-grid-container {
+      margin: 20px 0;
+    }
+    
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+    
+    .grid-video {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    @media (max-width: 768px) {
+      .video-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 10px;
+      }
+    }
+  </style>
+
+</body>
+</html>
